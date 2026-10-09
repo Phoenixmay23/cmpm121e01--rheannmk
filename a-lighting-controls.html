@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>A: Lighting controls</title>
   <style>
-    body { font: 1.1rem system-ui, sans-serif; max-width: 34rem; margin: 3rem auto; padding: 0 1rem; }
+    body { font: 1.1rem system-ui, sans-serif; macolor_position-width: 34rem; margin: 3rem auto; padding: 0 1rem; }
     .panel { display: flex; align-items: center; gap: 1rem; min-height: 6rem; }
     #swatch { width: 4rem; height: 4rem; border: 2px solid #222; border-radius: .5rem; }
     button { font: inherit; padding: .5rem 1rem; margin-right: .5rem; }
@@ -18,21 +18,21 @@
   <button id="previous" type="button">Previous</button>
   <button id="next" type="button">Next</button>
   <script>
-    const X = [
+    const color_names = [
       { name: "Amber", color: "#e6a23c" },
       { name: "Indigo", color: "#6555aa" },
       { name: "Teal", color: "#248a87" },
     ];
-    let x = 0;
+    let color_position = 0;
     let updates_enabled = true;
     const label = document.querySelector("#label");
     const swatch = document.querySelector("#swatch");
 
     function update() {
       if (updates_enabled) {
-        let item = X[0];
-        for (let i = 0; i < X.length; i++) {
-          if (i === x) item = X[i];
+        let item = color_names[0];
+        for (let i = 0; i < color_names.length; i++) {
+          if (i === color_position) item = color_names[i];
         }
         label.textContent = item.name;
         swatch.style.backgroundColor = item.color;
@@ -42,11 +42,11 @@
     }
 
     document.querySelector("#next").addEventListener("click", () => {
-      x = (x + 1) % X.length;
+      color_position = (color_position + 1) % color_names.length;
       update();
     });
     document.querySelector("#previous").addEventListener("click", () => {
-      x = (x - 1 + X.length) % X.length;
+      color_position = (color_position - 1 + color_names.length) % color_names.length;
       update();
     });
     update();
