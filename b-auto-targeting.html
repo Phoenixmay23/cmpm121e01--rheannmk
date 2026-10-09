@@ -45,11 +45,14 @@
         {
           continue;
         }
+        //if there is no target, target current enemy.
+        if (target==null) {
+          target = enemy;
+        }
         // Keep the earliest enemy if two have equal health.
           if (target && target.health > enemy.health) {
-          continue;
-          }
           target = enemy;
+          }
       }
       return target;
     }
